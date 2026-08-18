@@ -63,3 +63,9 @@ async function getIpData(search?: string) {
   if (search) {
     url += `&ipAddress=${search}`;
   }
+    try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Unable to get IP information");
+    }
