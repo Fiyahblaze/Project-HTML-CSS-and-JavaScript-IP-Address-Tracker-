@@ -16,8 +16,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       />
 
       <button type="submit" aria-label="Search">
-        →
-      </button>
+  <img src="/images/icon-arrow.svg" alt="" />
+</button>
     </form>
   </header>
 
