@@ -69,3 +69,16 @@ async function getIpData(search?: string) {
     if (!response.ok) {
       throw new Error("Unable to get IP information");
     }
+    const data = await response.json();
+
+    ipAddress.textContent = data.ip;
+    location.textContent = `${data.location.city}, ${data.location.region}`;
+    timezone.textContent = `UTC ${data.location.timezone}`;
+    isp.textContent = data.isp;
+
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+    alert("Unable to find that IP address or domain.");
+  }
+}
