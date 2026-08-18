@@ -7,6 +7,15 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header class="header">
     <h1>IP Address Tracker</h1>
 
-    document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+     <form id="search-form" class="search-form">
+      <label for="ip-input" class="sr-only">
+        Enter an IP address or domain
+      </label>
+
   <header class="header">
     <h1>IP Address Tracker</h1>
+    <input
+        type="text"
+        id="ip-input"
+        placeholder="Search for any IP address or domain"
+      />
