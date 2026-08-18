@@ -76,8 +76,10 @@ const marker = L.marker([20, 0], {
 async function getIpData(search?: string) {
   let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
 
-  if (search) {
-  if (search.includes(".")) {
+if (search) {
+  const isIpAddress = /^\d{1,3}(\.\d{1,3}){3}$/.test(search);
+
+  if (isIpAddress) {
     url += `&ipAddress=${search}`;
   } else {
     url += `&domain=${search}`;
