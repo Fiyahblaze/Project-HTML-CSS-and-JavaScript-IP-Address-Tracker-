@@ -59,16 +59,13 @@ const timezone = document.querySelector<HTMLParagraphElement>("#timezone")!;
 const isp = document.querySelector<HTMLParagraphElement>("#isp")!;
 
 /* Create the map */
-const map = L.map("map").setView([32.69922, -117.11281], 13);
+const map = L.map("map").setView([20, 0], 2);
 
-/* Add the map tiles */
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
-/* Add marker */
-const marker = L.marker([32.69922, -117.11281]).addTo(map);
-
+const marker = L.marker([20, 0]).addTo(map);
 async function getIpData(search?: string) {
   let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
 
