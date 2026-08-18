@@ -2,24 +2,24 @@ import "./style.css";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-const API_KEY = "at_8q7zetpdPKm2t2zyq2vZjfN7VTcNC";
+const API_KEY = "YOUR_API_KEY";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header class="header">
     <h1>IP Address Tracker</h1>
 
-     <form id="search-form" class="search-form">
+    <form id="search-form" class="search-form">
       <label for="ip-input" class="sr-only">
         Enter an IP address or domain
       </label>
 
-    <input
+      <input
         type="text"
         id="ip-input"
         placeholder="Search for any IP address or domain"
       />
 
-       <button type="submit" aria-label="Search">
+      <button type="submit" aria-label="Search">
         <img src="/images/icon-arrow.svg" alt="" />
       </button>
     </form>
@@ -58,18 +58,31 @@ const location = document.querySelector<HTMLParagraphElement>("#location")!;
 const timezone = document.querySelector<HTMLParagraphElement>("#timezone")!;
 const isp = document.querySelector<HTMLParagraphElement>("#isp")!;
 
+/* Create the map */
+const map = L.map("map").setView([32.69922, -117.11281], 13);
+
+/* Add the map tiles */
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "&copy; OpenStreetMap contributors",
+}).addTo(map);
+
+/* Add marker */
+const marker = L.marker([32.69922, -117.11281]).addTo(map);
+
 async function getIpData(search?: string) {
   let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
 
   if (search) {
     url += `&ipAddress=${search}`;
   }
-    try {
+
+  try {
     const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error("Unable to get IP information");
     }
+
     const data = await response.json();
 
     ipAddress.textContent = data.ip;
@@ -83,6 +96,7 @@ async function getIpData(search?: string) {
     alert("Unable to find that IP address or domain.");
   }
 }
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
