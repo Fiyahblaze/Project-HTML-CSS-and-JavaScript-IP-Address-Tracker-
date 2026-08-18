@@ -11,9 +11,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <label for="ip-input" class="sr-only">
         Enter an IP address or domain
       </label>
-
-  <header class="header">
-    <h1>IP Address Tracker</h1>
+      
     <input
         type="text"
         id="ip-input"
