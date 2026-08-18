@@ -2,7 +2,7 @@ import "./style.css";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-const API_KEY = "YOUR_API_KEY";
+const API_KEY = "at_8q7zetpdPKm2t2zyq2vZjfN7VTcNC";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header class="header">
