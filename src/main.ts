@@ -23,3 +23,43 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       </button>
     </form>
   </header>
+
+  <section class="info-card">
+    <div class="info-item">
+      <h2>IP ADDRESS</h2>
+      <p id="ip-address">--</p>
+    </div>
+
+    <div class="info-item">
+      <h2>LOCATION</h2>
+      <p id="location">--</p>
+    </div>
+
+    <div class="info-item">
+      <h2>TIMEZONE</h2>
+      <p id="timezone">--</p>
+    </div>
+
+    <div class="info-item">
+      <h2>ISP</h2>
+      <p id="isp">--</p>
+    </div>
+  </section>
+
+  <main id="map"></main>
+`;
+
+const form = document.querySelector<HTMLFormElement>("#search-form")!;
+const input = document.querySelector<HTMLInputElement>("#ip-input")!;
+
+const ipAddress = document.querySelector<HTMLParagraphElement>("#ip-address")!;
+const location = document.querySelector<HTMLParagraphElement>("#location")!;
+const timezone = document.querySelector<HTMLParagraphElement>("#timezone")!;
+const isp = document.querySelector<HTMLParagraphElement>("#isp")!;
+
+async function getIpData(search?: string) {
+  let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
+
+  if (search) {
+    url += `&ipAddress=${search}`;
+  }
