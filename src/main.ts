@@ -61,10 +61,9 @@ const isp = document.querySelector<HTMLParagraphElement>("#isp")!;
 /* Create the map */
 const map = L.map("map").setView([20, 0], 2);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; OpenStreetMap contributors",
+L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+  attribution: "&copy; OpenStreetMap &copy; CARTO",
 }).addTo(map);
-
 const marker = L.marker([20, 0]).addTo(map);
 async function getIpData(search?: string) {
   let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}`;
@@ -74,11 +73,16 @@ async function getIpData(search?: string) {
   }
 
   try {
-    const response = await fetch(url);
+   const response = await fetch(url);
 
-    if (!response.ok) {
-      throw new Error("Unable to get IP information");
-    }
+console.log("API URL:", url);
+console.log("API Status:", response.status);
+
+if (!response.ok) {
+  const errorMessage = await response.text();
+  console.error("IPify error:", errorMessage);
+  throw new Error("Unable to get IP information");
+}
 
     const data = await response.json();
 
