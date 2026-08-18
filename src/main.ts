@@ -1,60 +1,49 @@
-import './style.css'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.ts'
+import "./style.css";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+  <header class="header">
+    <h1>IP Address Tracker</h1>
 
-<div class="ticks"></div>
+    <form id="search-form" class="search-form">
+      <label for="ip-input" class="sr-only">
+        Enter an IP address or domain
+      </label>
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+      <input
+        type="text"
+        id="ip-input"
+        placeholder="Search for any IP address or domain"
+      />
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+      <button type="submit" aria-label="Search">
+        →
+      </button>
+    </form>
+  </header>
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  <section class="info-card">
+    <div class="info-item">
+      <h2>IP ADDRESS</h2>
+      <p id="ip-address">--</p>
+    </div>
+
+    <div class="info-item">
+      <h2>LOCATION</h2>
+      <p id="location">--</p>
+    </div>
+
+    <div class="info-item">
+      <h2>TIMEZONE</h2>
+      <p id="timezone">--</p>
+    </div>
+
+    <div class="info-item">
+      <h2>ISP</h2>
+      <p id="isp">--</p>
+    </div>
+  </section>
+
+  <main id="map">
+    <p class="map-message">Map will appear here.</p>
+  </main>
+`;
