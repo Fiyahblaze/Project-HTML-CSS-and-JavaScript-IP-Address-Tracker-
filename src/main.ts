@@ -11,9 +11,15 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <label for="ip-input" class="sr-only">
         Enter an IP address or domain
       </label>
-      
+
     <input
         type="text"
         id="ip-input"
         placeholder="Search for any IP address or domain"
       />
+
+       <button type="submit" aria-label="Search">
+        <img src="/images/icon-arrow.svg" alt="" />
+      </button>
+    </form>
+  </header>
