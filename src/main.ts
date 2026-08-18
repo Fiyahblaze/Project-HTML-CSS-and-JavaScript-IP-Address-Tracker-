@@ -82,3 +82,17 @@ async function getIpData(search?: string) {
     alert("Unable to find that IP address or domain.");
   }
 }
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const search = input.value.trim();
+
+  if (search === "") {
+    alert("Please enter an IP address or domain.");
+    return;
+  }
+
+  getIpData(search);
+});
+
+getIpData();
