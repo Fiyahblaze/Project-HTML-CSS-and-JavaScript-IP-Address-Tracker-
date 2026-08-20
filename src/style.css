@@ -8,75 +8,79 @@ body {
   color: #2b2b2b;
 }
 
-/* Header */
 .header {
   height: 280px;
   background-image: url("/images/pattern-bg-desktop.png");
   background-size: cover;
   background-position: center;
-  text-align: center;
   padding-top: 30px;
+  text-align: center;
 }
 
 .header h1 {
   color: white;
-  font-size: 28px;
+  font-size: 32px;
   margin: 0 0 25px;
 }
 
-/* Search */
 .search-form {
   display: flex;
-  justify-content: center;
-  width: 90%;
-  max-width: 550px;
+  width: 500px;
+  max-width: 90%;
   margin: 0 auto;
 }
 
 .search-form input {
   flex: 1;
-  padding: 18px;
+  height: 58px;
   border: none;
-  border-radius: 12px 0 0 12px;
-  font-size: 16px;
+  border-radius: 15px 0 0 15px;
+  padding: 0 20px;
+  font-size: 18px;
+  outline: none;
 }
 
 .search-form button {
   width: 60px;
+  height: 58px;
   border: none;
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 15px 15px 0;
   background: #2b2b2b;
-  color: white;
   cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #3f3f3f;
+}
+.search-form input:focus,
+.search-form button:focus {
+  outline: 3px solid white;
+  outline-offset: 2px;
 }
 
 .search-form button img {
   width: 10px;
 }
 
-.search-form button:hover {
-  background: #555;
-}
-
-/* Information Card */
 .info-card {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  width: 90%;
+  position: absolute;
+  top: 185px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
   max-width: 1100px;
-  margin: -50px auto 0;
-  padding: 30px;
+  min-height: 150px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  z-index: 1000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .info-item {
-  flex: 1;
-  padding: 0 20px;
+  padding: 0 25px;
   border-right: 1px solid #ddd;
 }
 
@@ -85,33 +89,25 @@ body {
 }
 
 .info-item h2 {
-  margin: 0 0 10px;
-  color: #888;
+  margin: 0 0 12px;
+  color: #969696;
   font-size: 12px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
 .info-item p {
   margin: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 }
 
-/* Map */
 #map {
   height: calc(100vh - 280px);
-  min-height: 450px;
-  background: #ddd;
+  min-height: 500px;
+  width: 100%;
+  z-index: 1;
 }
 
-.map-message {
-  margin: 0;
-  padding-top: 100px;
-  text-align: center;
-  color: #555;
-}
-
-/* Accessibility */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -124,34 +120,55 @@ body {
   border: 0;
 }
 
-/* Mobile */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .header {
     height: 300px;
     background-image: url("/images/pattern-bg-mobile.png");
+    padding-top: 25px;
   }
 
   .header h1 {
     font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .search-form {
+    width: 90%;
+  }
+
+  .search-form input {
+    height: 55px;
+    font-size: 16px;
+  }
+
+  .search-form button {
+    height: 55px;
+    width: 55px;
   }
 
   .info-card {
-    flex-direction: column;
-    margin-top: -60px;
-    padding: 25px;
+    top: 145px;
+    width: 85%;
+    padding: 25px 15px;
+    display: block;
+    text-align: center;
   }
 
   .info-item {
+    padding: 8px 0;
     border-right: none;
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
   }
 
-  .info-item:last-child {
-    border-bottom: none;
+  .info-item h2 {
+    margin-bottom: 5px;
+  }
+
+  .info-item p {
+    font-size: 18px;
   }
 
   #map {
-    height: 500px;
+    height: calc(100vh - 300px);
+    min-height: 450px;
   }
 }
