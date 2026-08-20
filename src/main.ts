@@ -106,7 +106,7 @@ const lng = data.location.lng;
 map.setView([lat, lng], 13);
 marker.setLatLng([lat, lng]);
 
-console.log(data);
+
   } catch (error) {
     console.error(error);
     alert("Unable to find that IP address or domain.");
