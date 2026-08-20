@@ -1,7 +1,7 @@
 import "./style.css";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-
+const BASE_URL = import.meta.env.BASE_URL;
 const API_KEY = "at_8q7zetpdPKm2t2zyq2vZjfN7VTcNC";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
